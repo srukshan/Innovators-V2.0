@@ -1,51 +1,42 @@
 import React, { Component } from "react";
-import TripSummaryList from "./tripSummaryList";
+import Navigation from "./navigation";
+import { Route, Switch } from "react-router-dom";
+import Carousel from "./carousel";
+import Test from "./test";
+import Test2 from "./test2";
+import TripSummaryList from './tripSummaryList';
+import App from "../App";
 import TripView from "./tripView";
+import TabView from './TabView';
+import AboutUS from "./aboutUs";
+import Login from "./Login";
+import TripSummaryGrid from "./tripSummaryGrid";
+
 
 class Body extends Component {
-  state = {};
+  state = {
+    path: ""
+  };
   render() {
     return (
+
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon" />
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="#">
-                Home <span class="sr-only">(current)</span>
-              </a>
-              <a class="nav-item nav-link" href="#">
-                Features
-              </a>
-              <a class="nav-item nav-link" href="#">
-                Pricing
-              </a>
-              <a
-                class="nav-item nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-              >
-                Disabled
-              </a>
-            </div>
-          </div>
-        </nav>
-        <TripSummaryList />
+         <Carousel />
+        <Navigation />
+        <div className="container">
+          <Switch>
+            <Route path="/tripList" component={TripSummaryList} />
+            <Route path="/trip" component={TripView} />
+            <Route path="/create-trip" component={TabView}></Route>
+            <Route path="/aboutUs" component={AboutUS}></Route>
+            <Route path="/login" component={Login}></Route>
+            <Route path="/" component={TripSummaryGrid}></Route>
+          </Switch>
+        </div>
+
+        
       </div>
+      
     );
   }
 }

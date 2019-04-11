@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {  Link } from "react-router-dom";
 
 class TripSummary extends Component {
   state = {
@@ -134,12 +135,15 @@ class TripSummary extends Component {
           <p>Cordinator : {this.state.author}</p>
           <p>Exp Date : {this.state.endDate}</p>
           <span className="">
-            <input
+            {/* <input
               type="button"
               className="btn btn-primary btn-sm float-right"
               href={"/trip?id=" + this.state.id}
               value="Visit"
-            />
+            /> */}
+            <button className="btn btn-sm float-right">
+              <Link to="/trip">Visit</Link> 
+            </button>
           </span>
         </div>
       </div>
